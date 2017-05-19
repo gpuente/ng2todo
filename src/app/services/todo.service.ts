@@ -6,7 +6,7 @@ import { Observable } from "rxjs/observable";
 @Injectable()
 export class TodoService {
 
-  url:string = 'http://localhost:3000/api/todo';
+  url:string = 'http://todoapi.guillermopuente.com/api/todo';
   headers:Headers;
 
   constructor(private http:Http,) { this.headers = new Headers({'Content-Type':'application/json'}); }
