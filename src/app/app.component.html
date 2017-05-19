@@ -1,3 +1,33 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+
+  <form class="form-signin">
+    
+    <h2 class="form-signin-heading">{{title}}</h2>
+
+    <input type="text" id="new-todo" class="form-control" placeholder="Write a new task and hit Enter" [(ngModel)]="task" [ngModelOptions]="{standalone: true}" (keyup.enter)="newTask()">
+
+    <hr>
+
+    <p class="help">You can change an item description by writing its new value and pressing enter</p>
+
+    <table>
+      <tr>
+        <td class="text-center">Task</td>
+        <td class="text-center">Done</td>
+        <td class="text-center">Delete</td>
+      </tr>
+      <tr *ngFor="let todo of todos; let i = index">
+        <td><input type="text" id="new-todo" class="form-control" placeholder="Your new task!" value="{{todo.description}}" (keyup.enter)="changeTask(i, tarea.value)" #tarea [readOnly]="todo.complete"></td>
+        <td class="text-center"><input type="checkbox" [checked]="todo.complete" (click)="completeTask(i)"></td>
+        <td class="text-center"><a class="btn btn-danger" (click)="remove(i)"><span>x</span></a></td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <div *ngIf="showAlertChanged" class="alert alert-success" role="alert">
+      <strong>Done!</strong> You successfully changed task description!
+    </div>
+  </form>
+
+</div> <!-- /container -->
